@@ -13,16 +13,27 @@ The connection to the server is handled by a networking co-processor.
 
 ## Diagrams
 
-```mermaid
-
-
-
-```
+![Software Block Diagram](week-1-software-block-diagram.drawio.png)
 
 ## Parts list
 
-https://www.banggood.com/SM300D2-7-in-1-PM2_5-+-PM10-+-Temperature-+-Humidity-+-CO2-+-eCO2-+-TVOC-Sensor-Tester-Detector-Module-for-Air-Quality-Monitoring-p-1681079.html?cur_warehouse=CN
+| Function                   | Name                    | Interface type | Link                                                                                                                                                                                       |
+| -------------------------- | ----------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 7-in-1 Air Quality Sensor  | SM300D2                 | UART           | https://www.banggood.com/SM300D2-7-in-1-PM2_5-+-PM10-+-Temperature-+-Humidity-+-CO2-+-eCO2-+-TVOC-Sensor-Tester-Detector-Module-for-Air-Quality-Monitoring-p-1681079.html?cur_warehouse=CN |
+| Base board                 | STM32F429I-DISC1        | -              | https://www.st.com/en/evaluation-tools/32f429idiscovery.html                                                                                                                               |
+| Realtime Clock             | Onboard                 |                |                                                                                                                                                                                            |
+| Ultrasonic distance sensor | Grove Ultrasonic Ranger | PWM            | https://wiki.seeedstudio.com/Grove-Ultrasonic_Ranger/                                                                                                                                      |
+| Button                     | Onboard                 | GPIO           |                                                                                                                                                                                            |
+| LCD                        | Onboard                 | GPIO           |
 
-STM32F429I-DISC1
+### Network Co-Processor Option 1: Particle Xenon using CoAP over OpenThread
 
-https://www.st.com/en/evaluation-tools/32f429idiscovery.html
+| Function                        | Name           | Interface type | Link                            |
+| ------------------------------- | -------------- | -------------- | ------------------------------- |
+| Network Co-Processor OpenThread | Particle Xenon | UART           | https://docs.particle.io/xenon/ |
+
+### Network Co-Processor Option 2: ESP32 using MQTT over Wifi
+
+| Function                  | Name               | Interface type | Link                                  |
+| ------------------------- | ------------------ | -------------- | ------------------------------------- |
+| Network Co-Processor Wifi | Adafruit Huzzah 32 | UART           | https://www.adafruit.com/product/3405 |
