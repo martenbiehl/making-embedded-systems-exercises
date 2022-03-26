@@ -11,9 +11,17 @@ The connection to the server is handled by a networking co-processor.
 - **Option 1:** Particle Xenon using CoAP over OpenThread
 - **Option 2:** ESP32 using MQTT over Wifi
 
-## Diagrams
+## Block Diagram
 
-![Software Block Diagram](week-1-software-block-diagram.drawio.png)
+![Software Block Diagram](./week-1-software-block-diagram.drawio.png)
+
+## Hierachy of Control Diagram
+
+![Hierarchy of Control Diagram](./week-1-hierarchy-of-control-diagram.drawio.png)
+
+Note: If I would introduce OTA update, networking would need to be lifted up higher as well.
+
+## Layered Software Architecture Diagram
 
 ## Parts list
 
@@ -37,3 +45,9 @@ The connection to the server is handled by a networking co-processor.
 | Function                  | Name               | Interface type | Link                                  |
 | ------------------------- | ------------------ | -------------- | ------------------------------------- |
 | Network Co-Processor Wifi | Adafruit Huzzah 32 | UART           | https://www.adafruit.com/product/3405 |
+
+## Changes
+
+In [Hierarchy of Control Diagram](#hierachy-of-control-diagram) I reordered the hierarchy to have it flatter and therefore more versatile for the future.
+
+![v0](./week-1-hierarchy-of-control-diagram_v0.drawio.png)
