@@ -6,7 +6,7 @@ The system measures the air quality in a room and displaying the readings to a u
 
 The air quality measures are temperature, humidity, particulate matter (PM2.5 and PM10), eCO2, formaldehyde, volatile organice compounds (TVOC). The presence of the user is detected with an ultrasound sensor. The user can page through the air quality measurements with the onboard button.
 
-The connection to the server is handled by a networking co-processor.
+The connection to the server is handled by a networking co-processor (regarded as a black box in this assignement).
 
 - **Option 1:** Particle Xenon using CoAP over OpenThread
 - **Option 2:** ESP32 using MQTT over Wifi
@@ -17,11 +17,27 @@ The connection to the server is handled by a networking co-processor.
 
 ## Hierachy of Control Diagram
 
+### v0
+
+![v0](./week-1-hierarchy-of-control-diagram_v0.drawio.png)
+
+### v2
+
+I reordered the hierarchy to have it flatter and therefore more versatile for the future.
+
 ![Hierarchy of Control Diagram](./week-1-hierarchy-of-control-diagram.drawio.png)
 
 Note: If I would introduce OTA update, networking would need to be lifted up higher as well.
 
+### v3 dependencies
+
+To show the dependencies between subsystem, this view is more correct.
+
+![Hierarchy of Control Diagram v3](./week-1-hierarchy-of-control-diagram-dependencies.drawio.png)
+
 ## Layered Software Architecture Diagram
+
+![Layered Software Architecture Diagram](./week-1-layered-software-architecture-diagram.drawio.png)
 
 ## Parts list
 
@@ -45,9 +61,3 @@ Note: If I would introduce OTA update, networking would need to be lifted up hig
 | Function                  | Name               | Interface type | Link                                  |
 | ------------------------- | ------------------ | -------------- | ------------------------------------- |
 | Network Co-Processor Wifi | Adafruit Huzzah 32 | UART           | https://www.adafruit.com/product/3405 |
-
-## Changes
-
-In [Hierarchy of Control Diagram](#hierachy-of-control-diagram) I reordered the hierarchy to have it flatter and therefore more versatile for the future.
-
-![v0](./week-1-hierarchy-of-control-diagram_v0.drawio.png)
