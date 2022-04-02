@@ -16,6 +16,9 @@ Look at one application note for this board.
 
 ## Task 1: Investigate the board intended for your final project
 
+![Hardware Block Diagram](./week-2-board-disc1.png)
+Source [^1]
+
 | Function             |                                                    |
 | -------------------- | -------------------------------------------------- |
 | Processor            | STM32F429ZIT6, Arm Cortex-M4 core with DSP and FPU |
@@ -70,3 +73,7 @@ Look at one application note for this board.
 - 5v power
 - digital isolaters for all MSP432 signals
 - standard CAN bus with a transceiver
+
+---
+
+[^1]: Source: https://www.st.com/resource/en/user_manual/um1670-discovery-kit-with-stm32f429zi-mcu-stmicroelectronics.pdf
