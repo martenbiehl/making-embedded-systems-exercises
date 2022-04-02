@@ -1,4 +1,4 @@
-# # Week 1 - Exercise 1: Idea project diagram
+# Week 1 - Exercise 1: Idea project diagram
 
 ## Summary
 
