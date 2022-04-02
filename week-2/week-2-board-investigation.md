@@ -16,22 +16,22 @@ Look at one application note for this board.
 
 ## Task 1: Investigate the board intended for your final project
 
-| Function             |     |
-| -------------------- | --- |
-| Processor            |     |
-| Flash                |     |
-| RAM                  |     |
-| Other Memory         |     |
-| Special Peripheral 1 |     |
-| Special Peripheral 2 |     |
-| Special Peripheral 3 |     |
-| Special Peripheral 4 |     |
-| Special Peripheral 5 |     |
-| ADC                  |     |
-| ADC features         |     |
-| Board cost           |     |
-| Processor cost       |     |
-| Stock                |     |
+| Function             |                                                    |
+| -------------------- | -------------------------------------------------- |
+| Processor            | STM32F429ZIT6, Arm Cortex-M4 core with DSP and FPU |
+| Flash                | 2 Mbytes                                           |
+| RAM                  | 256 Kbytes                                         |
+| Other Memory         | 64-Mbit SDRAM                                      |
+| Special Peripheral 1 | 3-axis digital output gyroscope                    |
+| Special Peripheral 2 | Six LEDs                                           |
+| Special Peripheral 3 | 2.4" QVGA TFT LCD                                  |
+| Special Peripheral 4 | Camera Interface                                   |
+| Special Peripheral 5 | Random generator                                   |
+| ADC                  | 3                                                  |
+| ADC features         | 24 channels                                        |
+| Board cost           | 29 USD, 42 USD USD                                 |
+| Processor cost       | 20-25 USD                                          |
+| Stock                | Mouser: 29, Digikey: 19, Newark: 185 (42 USD)      |
 
 ---
 
@@ -39,9 +39,11 @@ Look at one application note for this board.
 
 ## Task 2: Investigate the board assigned to you: LEDMCUEVM-132
 
+![Hardware Block Diagram](./week-2-board-LEDMCUEVM-132.drawio.png)
+
 | Function             |                                                          |
 | -------------------- | -------------------------------------------------------- |
-| Processor            | 120 Mhz Arm Cortex M4F with FPU                          |
+| Processor            | MSP432E401Y, 120 Mhz Arm Cortex M4F with FPU             |
 | Flash                | 1024KB                                                   |
 | RAM                  | 256KB SRAM                                               |
 | Other Memory         | EEPROM: 6KB, Internal ROM, External Peripheral Interface |
@@ -53,7 +55,7 @@ Look at one application note for this board.
 | ADC                  | yes                                                      |
 | ADC features         | 2 12-bit ADC, 2Msps, three comparator                    |
 | Board cost           | Digikey: 131,67 USD, Mouser: 118,80 USD                  |
-| Processor cost       |                                                          |
+| Processor cost       | 17-23 USD                                                |
 | Stock                | Digikey: 5, Mouser: 3, TI: 0                             |
 
 ---
