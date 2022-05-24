@@ -19,6 +19,7 @@ static eCommandResult_T ConsoleCommandVer(const char buffer[]);
 static eCommandResult_T ConsoleCommandHelp(const char buffer[]);
 static eCommandResult_T ConsoleCommandParamExampleInt16(const char buffer[]);
 static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[]);
+static eCommandResult_T ConsoleCommandTrigger(const char buffer[]);
 
 static const sConsoleCommandTable_T mConsoleCommandTable[] =
 {
@@ -27,6 +28,7 @@ static const sConsoleCommandTable_T mConsoleCommandTable[] =
     {"ver", &ConsoleCommandVer, HELP("Get the version string")},
     {"int", &ConsoleCommandParamExampleInt16, HELP("How to get a signed int16 from params list: int -321")},
     {"u16h", &ConsoleCommandParamExampleHexUint16, HELP("How to get a hex u16 from the params list: u16h aB12")},
+	{"trigger", &ConsoleCommandTrigger, HELP("trigger a statemachine event: trigger eventname")},
 
 	CONSOLE_COMMAND_TABLE_END // must be LAST
 };
@@ -106,4 +108,16 @@ const sConsoleCommandTable_T* ConsoleCommandsGetTable(void)
 	return (mConsoleCommandTable);
 }
 
-
+static eCommandResult_T ConsoleCommandTrigger(const char buffer[])
+{
+	char eventname[255] = {0};
+	eCommandResult_T result;
+	result = ConsoleReceiveParamString(buffer, 1, &eventname[0], 255);
+	if ( COMMAND_SUCCESS == result )
+	{
+		ConsoleIoSendString("Event name is ");
+		ConsoleSendString(eventname);
+		ConsoleIoSendString(STR_ENDLINE);
+	}
+	return result;
+}

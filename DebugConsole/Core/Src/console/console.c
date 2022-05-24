@@ -452,6 +452,31 @@ static eCommandResult_T ConsoleUtilsIntToHexChar(uint8_t intVal, char* pChar)
 
     return result;
 }
+
+// ConsoleReceiveString
+// Identify and obtain a parameter of string
+eCommandResult_T ConsoleReceiveParamString(const char * buffer, const uint8_t parameterNumber, char* parameterString, uint8_t size)
+{
+	uint32_t startIndex = 0;
+	uint32_t i;
+	eCommandResult_T result;
+
+	result = ConsoleParamFindN(buffer, parameterNumber, &startIndex);
+	if ( COMMAND_SUCCESS == result )
+	{
+		for (i = 0; i < CONSOLE_COMMAND_MAX_LENGTH && i < size; i++) {
+			parameterString[i] = buffer[startIndex + i];
+			if (buffer[startIndex + i] == '\0')
+			{
+				break;
+			}
+		}
+		result = COMMAND_SUCCESS;
+	}
+	return result;
+}
+
+
 // ConsoleSendString
 // Send a null terminated string to the console.
 // This is a light wrapper around ConsoleIoSendString. It uses the same
