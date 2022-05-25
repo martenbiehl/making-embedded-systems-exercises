@@ -20,6 +20,7 @@ static eCommandResult_T ConsoleCommandHelp(const char buffer[]);
 static eCommandResult_T ConsoleCommandParamExampleInt16(const char buffer[]);
 static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[]);
 static eCommandResult_T ConsoleCommandTrigger(const char buffer[]);
+static eCommandResult_T ConsoleCommandGetSetTemperature(const char buffer[]);
 
 static const sConsoleCommandTable_T mConsoleCommandTable[] =
 {
@@ -29,6 +30,7 @@ static const sConsoleCommandTable_T mConsoleCommandTable[] =
     {"int", &ConsoleCommandParamExampleInt16, HELP("How to get a signed int16 from params list: int -321")},
     {"u16h", &ConsoleCommandParamExampleHexUint16, HELP("How to get a hex u16 from the params list: u16h aB12")},
 	{"trigger", &ConsoleCommandTrigger, HELP("trigger a statemachine event: trigger eventname")},
+	{"temperature", &ConsoleCommandGetSetTemperature, HELP("Get or set temperature")},
 
 	CONSOLE_COMMAND_TABLE_END // must be LAST
 };
@@ -117,6 +119,36 @@ static eCommandResult_T ConsoleCommandTrigger(const char buffer[])
 	{
 		ConsoleIoSendString("Event name is ");
 		ConsoleSendString(eventname);
+		ConsoleIoSendString(STR_ENDLINE);
+	}
+	return result;
+}
+
+static uint32_t mTemperature = 0;
+void SetTemperature(uint32_t temperature)
+{
+	mTemperature = temperature;
+}
+uint32_t GetTemperature()
+{
+	return mTemperature;
+}
+
+static eCommandResult_T ConsoleCommandGetSetTemperature(const char buffer[])
+{
+	uint32_t temperature;
+	eCommandResult_T result;
+	result = ConsoleReceiveParamUint32(buffer, 1, &temperature);
+	if ( COMMAND_SUCCESS == result )
+	{
+		SetTemperature(temperature);
+		ConsoleIoSendString("Temperature is set to ");
+		ConsoleSendParamInt32(temperature);
+		ConsoleIoSendString(STR_ENDLINE);
+	} else {
+		temperature = GetTemperature();
+		ConsoleIoSendString("Temperature is ");
+		ConsoleSendParamInt32(temperature);
 		ConsoleIoSendString(STR_ENDLINE);
 	}
 	return result;
