@@ -26,7 +26,6 @@ bool mReceiveBufferNeedsChecking = false;
 // local functions
 static int32_t ConsoleCommandEndline(const char receiveBuffer[], const  uint32_t filledLength);
 
-static uint32_t ConsoleCommandMatch(const char* name, const char *buffer);
 static eCommandResult_T ConsoleParamFindN(const char * buffer, const uint8_t parameterNumber, uint32_t *startLocation);
 static uint32_t ConsoleResetBuffer(char receiveBuffer[], const  uint32_t filledLength, uint32_t usedSoFar);
 
@@ -36,7 +35,7 @@ static eCommandResult_T ConsoleUtilsIntToHexChar(uint8_t intVal, char* pChar); /
 // ConsoleCommandMatch
 // Look to see if the data in the buffer matches the command name given that
 // the strings are different lengths and we have parameter separators
-static uint32_t ConsoleCommandMatch(const char* name, const char *buffer)
+	uint32_t ConsoleCommandMatch(const char* name, const char *buffer)
 {
 	uint32_t i = 0u;
 	uint32_t result = 0u; // match

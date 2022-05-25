@@ -21,6 +21,8 @@
 void ConsoleInit(void);
 void ConsoleProcess(void); // call this in a loop
 
+uint32_t ConsoleCommandMatch(const char* name, const char *buffer);
+
 // called from lower down areas of the code (consoleCommands)
 typedef enum { 
 	COMMAND_SUCCESS = 0u, 
@@ -39,6 +41,7 @@ eCommandResult_T ConsoleSendParamInt32(int32_t parameterInt);
 eCommandResult_T ConsoleReceiveParamHexUint16(const char * buffer, const uint8_t parameterNumber, uint16_t* parameterUint16);
 eCommandResult_T ConsoleSendParamHexUint16(uint16_t parameterUint16);
 eCommandResult_T ConsoleSendParamHexUint8(uint8_t parameterUint8);
+eCommandResult_T ConsoleReceiveParamUint32(const char * buffer, const uint8_t parameterNumber, uint32_t* parameterInt);
 eCommandResult_T ConsoleReceiveParamString(const char * buffer, const uint8_t parameterNumber, char* parameterString, uint8_t size);
 eCommandResult_T ConsoleSendString(const char *buffer); // must be null terminated
 eCommandResult_T ConsoleSendLine(const char *buffer); // must be null terminated
