@@ -13,6 +13,7 @@
 #include "version.h"
 
 #define IGNORE_UNUSED_VARIABLE(x)     if ( &x == &x ) {}
+#define NOT_FOUND		              -1
 
 static eCommandResult_T ConsoleCommandComment(const char buffer[]);
 static eCommandResult_T ConsoleCommandVer(const char buffer[]);
@@ -21,6 +22,7 @@ static eCommandResult_T ConsoleCommandParamExampleInt16(const char buffer[]);
 static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[]);
 static eCommandResult_T ConsoleCommandTrigger(const char buffer[]);
 static eCommandResult_T ConsoleCommandGetSetTemperature(const char buffer[]);
+static eCommandResult_T ConsoleCommandAirQualitySensorSubSystem(const char buffer[]);
 
 static const sConsoleCommandTable_T mConsoleCommandTable[] =
 {
@@ -31,6 +33,7 @@ static const sConsoleCommandTable_T mConsoleCommandTable[] =
     {"u16h", &ConsoleCommandParamExampleHexUint16, HELP("How to get a hex u16 from the params list: u16h aB12")},
 	{"trigger", &ConsoleCommandTrigger, HELP("trigger a statemachine event: trigger eventname")},
 	{"temperature", &ConsoleCommandGetSetTemperature, HELP("Get or set temperature")},
+	{"air_quality_sensor", &ConsoleCommandAirQualitySensorSubSystem, HELP("Air Quality Sensor Sub System")},
 
 	CONSOLE_COMMAND_TABLE_END // must be LAST
 };
@@ -153,3 +156,98 @@ static eCommandResult_T ConsoleCommandGetSetTemperature(const char buffer[])
 	}
 	return result;
 }
+
+static eCommandResult_T ConsoleCommandAirQualitySubSystemConnected(const char buffer[]);
+static eCommandResult_T ConsoleCommandAirQualitySubSystemLast(const char buffer[]);
+
+static const sConsoleCommandTable_T mConsoleCommandTableAirQualitySubSystem[] =
+{
+    {";", &ConsoleCommandComment, HELP("Comment! You do need a space after the semicolon. ")},
+    {"help", &ConsoleCommandHelp, HELP("Lists the commands available")},
+    {"connection", &ConsoleCommandAirQualitySubSystemConnected, HELP("Is the system connected?")},
+    {"last", &ConsoleCommandAirQualitySubSystemLast, HELP("Print last data")},
+
+	CONSOLE_COMMAND_TABLE_END // must be LAST
+};
+
+const sConsoleCommandTable_T* ConsoleCommandsGetTableAirQualitySubSystem(void)
+{
+	return (mConsoleCommandTableAirQualitySubSystem);
+}
+
+
+static eCommandResult_T ConsoleCommandAirQualitySensorSubSystem(const char buffer[])
+{
+	const sConsoleCommandTable_T* commandTable;
+	uint32_t cmdIndex;
+	int32_t  found;
+	eCommandResult_T result;
+	char command[255] = {0};
+
+
+	commandTable = ConsoleCommandsGetTableAirQualitySubSystem();
+	cmdIndex = 0u;
+	found = NOT_FOUND;
+	result = ConsoleReceiveParamString(buffer, 1, &command[0], 255);
+	while ( ( NULL != commandTable[cmdIndex].name ) && ( NOT_FOUND == found ) )
+	{
+		if ( ConsoleCommandMatch(commandTable[cmdIndex].name, command) )
+		{
+			result = commandTable[cmdIndex].execute(command);
+			if ( COMMAND_SUCCESS != result )
+			{
+				ConsoleIoSendString("Error: ");
+				ConsoleIoSendString(command);
+
+				ConsoleIoSendString("Help: ");
+				ConsoleIoSendString(commandTable[cmdIndex].help);
+				ConsoleIoSendString(STR_ENDLINE);
+
+			}
+			found = cmdIndex;
+		}
+		else
+		{
+			cmdIndex++;
+
+		}
+	}
+	if ( NOT_FOUND == found )
+	{
+		if (strlen(buffer) > 2) /// shorter than that, it is probably nothing
+		{
+			ConsoleIoSendString("Command not found.");
+			ConsoleIoSendString(STR_ENDLINE);
+		}
+	}
+	return COMMAND_SUCCESS;
+}
+
+static eCommandResult_T ConsoleCommandAirQualitySubSystemConnected(const char buffer[])
+{
+	ConsoleIoSendString("Air Quality Subsystem is ");
+	ConsoleIoSendString("not ");
+	ConsoleIoSendString("connected");
+	ConsoleIoSendString(STR_ENDLINE);
+
+	return COMMAND_SUCCESS;
+}
+
+static eCommandResult_T ConsoleCommandAirQualitySubSystemLast(const char buffer[])
+{
+	ConsoleIoSendString("Air Quality Subsystem last data: ");
+	ConsoleIoSendString(STR_ENDLINE);
+
+	ConsoleIoSendString("temperature: ");
+	ConsoleSendParamInt32(GetTemperature());
+	ConsoleIoSendString("deg C");
+	ConsoleIoSendString(STR_ENDLINE);
+
+	ConsoleIoSendString("humidity: ");
+	ConsoleSendParamInt32(20);
+	ConsoleIoSendString("%");
+	ConsoleIoSendString(STR_ENDLINE);
+
+	return COMMAND_SUCCESS;
+}
+
