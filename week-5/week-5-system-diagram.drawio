@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2022-03-24T22:04:38.209Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" etag="UnzRcaq1CWdf6trYKuHS" version="17.2.2" type="github">
+  <diagram id="JmmnXUoBwWL0g1PXkOQh" name="Page-1">
+    <mxGraphModel dx="1298" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-1" value="button" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-2" value="ultrasonic sensor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-3" value="air quality sensor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-4" value="processor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="80" width="380" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-5" value="network co-processor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="205" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-6" value="display" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-7" value="real time clock" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-8" value="I2C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="335" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-9" value="GPIO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="95" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-10" value="PWM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="175" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-11" value="UART2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="255" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-12" value="UART3" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KgNzIUeSmMRCIcplDyC2-15" value="GPIO" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="135" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
