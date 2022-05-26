@@ -20,7 +20,7 @@ The connection to the server is handled by a networking co-processor (regarded a
 
 To show the dependencies between subsystem, this view is more correct.
 
-![Hierarchy of Control Diagram v4]/week-5-hierarchy-of-control-diagram.drawio.png)
+![Hierarchy of Control Diagram v4](./week-5-hierarchy-of-control-diagram.drawio.png)
 
 ## Layered Software Architecture Diagram
 
